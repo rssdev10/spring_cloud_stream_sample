@@ -1,17 +1,35 @@
 spring:
   profiles: dev,production
   cloud:
+    function:
+      definition: generate_flux;generate_non_flux;process;sink
+
     stream:
       function:
-        definition: generate;process;sink
-        bindings:
-          generate-out-0: source1
-          process-in-0: source1
-          process-out-0: processed
-          sink-in-0: processed
+#        definition: generate_flux;process;sink
+#        bindings:
+#          generate_flux-out-0: source1
+#          process-in-0: source1
+#          process-out-0: processed
+#          sink-in-0: processed
 
         bindingServiceProperties:
           defaultBinder: local_rabbit
+
+      bindings:
+        generate_flux-out-0:
+          destination: source
+        generate_non_flux-out-0:
+          destination: source
+
+        process-in-0:
+          destination: source
+          group: processors
+        process-out-0:
+          destination: processed
+        sink-in-0:
+          destination: processed
+          group: db
 
       binders:
         local_rabbit:

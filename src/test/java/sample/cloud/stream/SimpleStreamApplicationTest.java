@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestPropertySource(
-        properties = {"spring.cloud.function.definition = generate|process"}
+        properties = {"spring.cloud.function.definition = generate_flux|process"}
 )
 class SimpleStreamApplicationTest extends AbstractTest {
     @Autowired
