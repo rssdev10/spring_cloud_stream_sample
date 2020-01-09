@@ -32,8 +32,8 @@ public class SimpleStreamApplication {
     }
 
     public void emitData(String str) {
-        sourceGenerator.onNext(str);
-        System.out.println("Flux emitted: " + str);
+        sourceGenerator.onNext("Flux emmiter: " + str);
+        System.out.println("Request to emit: " + str);
     }
 
     @Bean
