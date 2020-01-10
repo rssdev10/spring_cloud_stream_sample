@@ -23,7 +23,7 @@ public class SimpleStreamApplication {
         final ApplicationContext context = SpringApplication.run(SimpleStreamApplication.class, args);
         final SimpleStreamApplication app = context.getBean(SimpleStreamApplication.class);
         for (int i = 0; i < 5; i++) {
-            app.emitData(LocalDateTime.now().toString());
+            app.emitData(Integer.toString(i) + ":" + LocalDateTime.now().toString());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ignore) {
