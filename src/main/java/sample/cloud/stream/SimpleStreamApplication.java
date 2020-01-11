@@ -23,7 +23,7 @@ public class SimpleStreamApplication {
         final ApplicationContext context = SpringApplication.run(SimpleStreamApplication.class, args);
         final SimpleStreamApplication app = context.getBean(SimpleStreamApplication.class);
         for (int i = 0; i < 5; i++) {
-            app.emitData(Integer.toString(i) + ":" + LocalDateTime.now().toString());
+            app.emitData(Integer.toString(i) + ": " + LocalDateTime.now().toString());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ignore) {
@@ -31,9 +31,11 @@ public class SimpleStreamApplication {
         }
     }
 
-    public void emitData(String str) {
-        sourceGenerator.onNext("Flux emmiter: " + str);
+    public String emitData(String str) {
+        String data = "Flux emmiter: " + str;
+        sourceGenerator.onNext(data);
         System.out.println("Request to emit: " + str);
+        return data;
     }
 
     @Bean

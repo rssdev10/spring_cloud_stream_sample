@@ -28,8 +28,7 @@ class SimpleStreamApplicationTest extends AbstractTest {
     // access to the function
     @Test
     public void testGeneratorAndProcessor() {
-        final String testStr = "test";
-        handlers.emitData(testStr);
+        final String testStr = handlers.emitData("test");
 
         Object eventObj;
         final Message<byte[]> message = outputDestination.receive(1000);
